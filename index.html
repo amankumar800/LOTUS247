@@ -13,7 +13,6 @@
 </head>
 
 <body>
-    <!-- Background is now abstract/dark, not the image -->
     <div class="bg-layer abstract-bg"></div>
     <div class="bg-layer noise-overlay"></div>
 
@@ -31,47 +30,53 @@
                 </h1>
             </header>
 
-            <!-- FOREGROUND HERO IMAGE -->
-            <!-- Prominent visual element, not a background -->
-            <div class="hero-visual-container fade-in-up delay-3">
-                <img src="hero_multi.png" alt="International Cricket Action" class="hero-img">
-                <!-- Bonus Sticker integrated onto the visual -->
-                <div class="bonus-sticker pulse-glow">
-                    <span class="bonus-val">15%</span>
-                    <span class="bonus-label">BONUS</span>
+            <!-- SPLIT CONTENT SECTION -->
+            <!-- Image Left (Vertical), Features Right -->
+            <div class="split-content-container fade-in-up delay-3">
+
+                <!-- Vertical Hero Image -->
+                <div class="hero-portrait-frame">
+                    <img src="hero_vertical.png" alt="Cricket Squad" class="portrait-img">
+                    <div class="bonus-tag-corner">
+                        <span class="bonus-small">15%</span>
+                        <span class="bonus-tiny">BONUS</span>
+                    </div>
+                </div>
+
+                <!-- Compact Features List -->
+                <div class="features-list-compact">
+                    <div class="feature-row">
+                        <div class="icon-dot"></div>
+                        <div class="f-info">
+                            <div class="f-lbl">Min Dep/With</div>
+                            <div class="f-v">₹100</div>
+                        </div>
+                    </div>
+                    <div class="feature-row">
+                        <div class="icon-dot"></div>
+                        <div class="f-info">
+                            <div class="f-lbl">Min Bet</div>
+                            <div class="f-v">100 Pts</div>
+                        </div>
+                    </div>
+                    <div class="feature-row highlight-row">
+                        <div class="icon-dot speed"></div>
+                        <div class="f-info">
+                            <div class="f-lbl">Withdrawal</div>
+                            <div class="f-v">15 Mins</div>
+                        </div>
+                    </div>
+                    <div class="feature-row highlight-row">
+                        <div class="icon-dot infinity"></div>
+                        <div class="f-info">
+                            <div class="f-lbl">Support</div>
+                            <div class="f-v">24/7 Live</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Features Grid -->
-            <div class="features-grid fade-in-up delay-4">
-                <div class="feature-box">
-                    <div class="f-text-center">
-                        <span class="f-val">₹100</span>
-                        <span class="f-label">Min Deposit</span>
-                    </div>
-                </div>
-                <div class="feature-box">
-                    <div class="f-text-center">
-                        <span class="f-val">1 PT = ₹1</span>
-                        <span class="f-label">Min Bet 100</span>
-                    </div>
-                </div>
-                <!-- Row 2 -->
-                <div class="feature-box highlight-box">
-                    <div class="f-text-center">
-                        <span class="f-val">15 MIN</span>
-                        <span class="f-label">Fast Withdraw</span>
-                    </div>
-                </div>
-                <div class="feature-box highlight-box">
-                    <div class="f-text-center">
-                        <span class="f-val">24/7</span>
-                        <span class="f-label">Unlimited</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Actions -->
+            <!-- Actions - Now Higher Up! -->
             <div class="action-grid fade-in-up delay-5">
                 <a href="https://wa.me/1234567890?text=I%20want%20LOTUS247%20ID%20with%2015%25%20bonus"
                     class="btn btn-primary cyber-glitch-hover">
@@ -80,18 +85,20 @@
                             <i class="fab fa-whatsapp"></i>
                         </div>
                         <div class="text-stack">
-                            <span class="action-label">GET INSTANT ID</span>
+                            <span class="action-label">CLICK FOR ID</span>
                             <span class="action-main">JOIN NOW</span>
                         </div>
                         <div class="arrow-box">
                             <i class="fas fa-angle-double-right"></i>
                         </div>
                     </div>
+                    <!-- Particle effect helper -->
+                    <div class="particles"></div>
                     <div class="shimmer"></div>
                 </a>
 
                 <a href="https://wa.me/1234567890?text=Customer%20Support%20Required" class="btn btn-secondary">
-                    <i class="fab fa-whatsapp"></i> CUSTOMER SUPPORT
+                    <i class="fab fa-whatsapp"></i> CHAT SUPPORT
                 </a>
             </div>
         </div>

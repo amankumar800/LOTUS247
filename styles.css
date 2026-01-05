@@ -3,8 +3,7 @@
     --deep-green: #004d2c;
     --electric-blue: #00f3ff;
     --void-black: #050505;
-    --panel-bg: rgba(20, 20, 25, 0.85);
-    /* More opaque for contrast */
+    --panel-bg: rgba(20, 20, 30, 0.9);
     --gold: #FFD700;
     --font-heading: 'Teko', sans-serif;
     --font-body: 'Rajdhani', sans-serif;
@@ -27,7 +26,7 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Background System (Abstract now) --- */
+/* Backgrounds */
 .bg-layer {
     position: fixed;
     top: 0;
@@ -38,33 +37,34 @@ body {
 }
 
 .abstract-bg {
-    background: radial-gradient(circle at 50% 0%, #1a1f2e 0%, #050505 70%);
+    background: radial-gradient(circle at 50% 0%, #1a1f2e 0%, #000000 80%);
+    width: 100%;
+    height: 100%;
 }
 
 .noise-overlay {
     background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48ZmlsdGVyIGlkPSJnoiPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjY1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2cpIiBvcGFjaXR5PSIwLjA1Ii8+PC9zdmc+');
-    mix-blend-mode: overlay;
-    z-index: -1;
-    opacity: 0.5;
+    opacity: 0.4;
+    width: 100%;
+    height: 100%;
 }
 
-/* --- Layout --- */
+/* Layout */
 .main-wrapper {
     width: 100%;
-    max-width: 450px;
-    /* Tighter for mobile feel */
+    max-width: 420px;
+    /* Default Mobile Width */
     padding: 15px;
+    transition: max-width 0.3s ease;
 }
 
 .glass-card {
     background: var(--panel-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 1.5rem;
+    padding: 1.2rem;
     position: relative;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
 }
@@ -75,36 +75,35 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: 2px;
     background: linear-gradient(90deg, var(--gold), var(--neon-green), var(--gold));
     border-radius: 20px 20px 0 0;
 }
 
-/* --- Brand Tag --- */
 .brand-tag {
-    align-self: center;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--gold);
     color: black;
     padding: 4px 12px;
-    border-radius: 0 0 8px 8px;
+    border-radius: 6px;
     font-weight: 700;
-    font-size: 0.7rem;
-    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
-    margin-top: -1.5rem;
-    /* Pull up to stick to top */
-    margin-bottom: 1rem;
+    font-size: 0.65rem;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
     z-index: 10;
 }
 
-/* --- Typography --- */
 .header-section {
-    text-align: center;
     margin-bottom: 1rem;
+    text-align: center;
+    margin-top: 0.5rem;
 }
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: 3.2rem;
+    font-size: 3rem;
     line-height: 0.9;
     color: white;
 }
@@ -113,99 +112,120 @@ body {
     color: var(--gold);
 }
 
-/* --- Foreground Hero Visual --- */
-.hero-visual-container {
+/* --- Split Layout --- */
+.split-content-container {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    /* Mobile: Fixed Image, Flex List */
+    gap: 15px;
+    margin-bottom: 1.2rem;
+    align-items: stretch;
+}
+
+/* Vertical Hero Image */
+.hero-portrait-frame {
     position: relative;
-    width: 100%;
     border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 1.5rem;
+    height: 200px;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.hero-img {
+.portrait-img {
     width: 100%;
-    height: auto;
-    display: block;
-    transform: scale(1.05);
-    /* Slight zoom for drama */
+    height: 100%;
+    object-fit: cover;
 }
 
-/* --- Bonus Sticker (Inside Image) --- */
-.bonus-sticker {
+/* In-image Bonus Tag */
+.bonus-tag-corner {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(255, 215, 0, 0.95);
+    top: 0;
+    right: 0;
+    background: var(--gold);
     color: black;
-    padding: 8px 12px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-}
-
-.bonus-val {
-    display: block;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 0.9;
-}
-
-.bonus-label {
-    font-size: 0.6rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-/* --- Features Grid --- */
-.features-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 1.5rem;
-}
-
-.feature-box {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.highlight-box {
-    background: rgba(0, 255, 136, 0.05);
-    border-color: rgba(0, 255, 136, 0.2);
-}
-
-.f-text-center {
+    padding: 4px 6px;
+    border-bottom-left-radius: 8px;
     text-align: center;
 }
 
-.f-val {
+.bonus-small {
     display: block;
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    color: white;
+    font-weight: 800;
+    font-size: 0.9rem;
     line-height: 1;
 }
 
-.f-label {
-    font-size: 0.7rem;
-    color: #a0a0b0;
-    text-transform: uppercase;
+.bonus-tiny {
+    display: block;
+    font-size: 0.5rem;
+    font-weight: 700;
+    line-height: 1;
 }
 
-/* --- Buttons --- */
+/* Features List (Compact) */
+.features-list-compact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.feature-row {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.highlight-row {
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+.icon-dot {
+    width: 8px;
+    height: 8px;
+    background: #666;
+    border-radius: 50%;
+}
+
+.icon-dot.speed {
+    background: var(--neon-green);
+    box-shadow: 0 0 5px var(--neon-green);
+}
+
+.icon-dot.infinity {
+    background: var(--electric-blue);
+    box-shadow: 0 0 5px var(--electric-blue);
+}
+
+.f-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.f-lbl {
+    font-size: 0.6rem;
+    color: #aaa;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.f-v {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    line-height: 1;
+    color: white;
+}
+
+/* Actions */
 .action-grid {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .btn {
@@ -224,9 +244,10 @@ body {
 .btn-content {
     display: flex;
     align-items: center;
-    padding: 12px 15px;
+    padding: 10px 15px;
     position: relative;
     z-index: 2;
+    height: 100%;
 }
 
 .whatsapp-icon-wrapper {
@@ -236,15 +257,15 @@ body {
 
 .text-stack {
     flex-grow: 1;
+    text-align: left;
 }
 
 .action-label {
     display: block;
     font-size: 0.65rem;
     text-transform: uppercase;
-    opacity: 0.9;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    opacity: 0.9;
 }
 
 .action-main {
@@ -288,13 +309,23 @@ body {
     color: #ccc;
     font-weight: 600;
     font-size: 0.85rem;
+    height: 100%;
 }
 
-/* Animations */
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
 .fade-in-up {
+    animation: fadeInUp 0.5s ease forwards;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    transform: translateY(10px);
 }
 
 .delay-1 {
@@ -309,12 +340,8 @@ body {
     animation-delay: 0.2s;
 }
 
-.delay-4 {
-    animation-delay: 0.25s;
-}
-
 .delay-5 {
-    animation-delay: 0.3s;
+    animation-delay: 0.25s;
 }
 
 @keyframes fadeInUp {
@@ -324,34 +351,119 @@ body {
     }
 }
 
-@keyframes shimmer {
-    0% {
-        left: -100%;
+/* --- DESKTOP / TABLET OVERHAUL --- */
+@media (min-width: 768px) {
+    .main-wrapper {
+        max-width: 900px;
+        /* Much wider card */
     }
 
-    20% {
-        left: 200%;
+    .glass-card {
+        padding: 3rem;
     }
 
-    100% {
-        left: 200%;
+    .brand-tag {
+        font-size: 0.9rem;
+        padding: 6px 15px;
+        top: -15px;
+    }
+
+    .header-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .hero-title {
+        font-size: 5rem;
+    }
+
+    /* Transform Split Container to 50/50 Grid */
+    .split-content-container {
+        grid-template-columns: 350px 1fr;
+        /* Large visual on left */
+        gap: 40px;
+        margin-bottom: 2.5rem;
+    }
+
+    .hero-portrait-frame {
+        height: auto;
+        /* Allow it to grow */
+        aspect-ratio: 3/4;
+    }
+
+    .bonus-small {
+        font-size: 1.5rem;
+    }
+
+    .bonus-tiny {
+        font-size: 0.8rem;
+    }
+
+    /* Transform Features List to Grid */
+    .features-list-compact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* 2x2 Grid */
+        gap: 15px;
+    }
+
+    .feature-row {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .icon-dot {
+        width: 12px;
+        height: 12px;
+        margin-bottom: 8px;
+    }
+
+    .f-info {
+        align-items: center;
+        gap: 5px;
+    }
+
+    .f-lbl {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+
+    .f-v {
+        font-size: 1.8rem;
+    }
+
+    /* Buttons Side-by-Side */
+    .action-grid {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .btn-primary {
+        flex: 1.5;
+    }
+
+    .btn-secondary {
+        flex: 1;
+    }
+
+    .action-main {
+        font-size: 2.2rem;
     }
 }
 
-.pulse-glow {
-    animation: pulseGlow 2s infinite;
-}
-
-@keyframes pulseGlow {
-    0% {
-        transform: scale(1);
+/* Mobile Tweak - Ultra Small */
+@media (max-width: 360px) {
+    .split-content-container {
+        grid-template-columns: 110px 1fr;
     }
 
-    50% {
-        transform: scale(1.05);
+    .hero-portrait-frame {
+        height: 160px;
     }
 
-    100% {
-        transform: scale(1);
+    .hero-title {
+        font-size: 2.5rem;
     }
 }
