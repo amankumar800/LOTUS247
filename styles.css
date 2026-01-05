@@ -120,12 +120,10 @@ body {
 
 /* --- Split Layout --- */
 .split-content-container {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    /* Mobile: Max Width Image Column */
-    gap: 10px;
+    display: flex;
+    justify-content: center;
     margin-bottom: 0.8rem;
-    align-items: stretch;
+    align-items: center;
 }
 
 /* Vertical Hero Image */
@@ -134,10 +132,11 @@ body {
     border-radius: 10px;
     overflow: hidden;
     width: 100%;
-    height: 100%;
-    /* Stretches to match stacked features */
-    min-height: 250px;
-    /* Minimum height assurance */
+    max-width: 250px;
+    /* Centered max width */
+    height: auto;
+    /* Natural height */
+    aspect-ratio: 3/4;
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -175,60 +174,7 @@ body {
     line-height: 1;
 }
 
-/* Feature Grid */
-.features-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    /* Stack vertically on mobile */
-    gap: 6px;
-    margin-top: 0;
-}
 
-.feature-card {
-    background: rgba(52, 168, 83, 0.05);
-    border-radius: 8px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    border: 1px solid rgba(52, 168, 83, 0.15);
-}
-
-.highlight-card {
-    background: rgba(52, 168, 83, 0.05);
-    border-color: rgba(52, 168, 83, 0.15);
-}
-
-.f-icon {
-    font-size: 0.9rem;
-    color: var(--primary-green);
-    margin-bottom: 2px;
-}
-
-.highlight-card .f-icon {
-    color: var(--primary-green);
-}
-
-.f-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.f-label {
-    font-size: 0.5rem;
-    color: var(--text-main);
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-.f-value {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    line-height: 1;
-    color: var(--text-main);
-}
 
 .action-grid {
     display: flex;
@@ -387,16 +333,14 @@ body {
 
     /* Transform Split Container to 50/50 Grid */
     .split-content-container {
-        grid-template-columns: 350px 1fr;
-        /* Large visual on left */
-        gap: 40px;
+        /* Large visual centered */
+        gap: 0;
         margin-bottom: 2.5rem;
     }
 
     .hero-portrait-frame {
-        height: auto;
-        /* Allow it to grow */
-        aspect-ratio: 3/4;
+        max-width: 350px;
+        /* Keep original desktop size */
     }
 
     .bonus-small {
@@ -407,29 +351,7 @@ body {
         font-size: 0.8rem;
     }
 
-    /* Transform Features List to Grid */
-    /* Transform Features List to Grid (Desktop) */
-    .features-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-    }
 
-    .feature-card {
-        padding: 1.5rem;
-        gap: 12px;
-    }
-
-    .f-icon {
-        font-size: 1.5rem;
-    }
-
-    .f-label {
-        font-size: 0.75rem;
-    }
-
-    .f-value {
-        font-size: 2rem;
-    }
 
     /* Buttons Side-by-Side */
     .action-grid {
@@ -452,9 +374,7 @@ body {
 
 /* Mobile Tweak - Ultra Small */
 @media (max-width: 360px) {
-    .split-content-container {
-        grid-template-columns: 110px 1fr;
-    }
+
 
     .hero-portrait-frame {
         height: 160px;
