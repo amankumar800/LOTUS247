@@ -121,8 +121,8 @@ body {
 /* --- Split Layout --- */
 .split-content-container {
     display: grid;
-    grid-template-columns: 120px 1fr;
-    /* Mobile: Compact Side-by-Side */
+    grid-template-columns: 220px 1fr;
+    /* Mobile: Max Width Image Column */
     gap: 10px;
     margin-bottom: 0.8rem;
     align-items: stretch;
