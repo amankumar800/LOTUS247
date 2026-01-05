@@ -132,8 +132,9 @@ body {
     border-radius: 10px;
     overflow: hidden;
     width: 100%;
-    max-width: 250px;
-    /* Centered max width */
+    /* Full width to match button */
+    max-width: 100%;
+    /* Remove max-width constraint */
     height: auto;
     /* Natural height */
     aspect-ratio: 3/4;
@@ -145,7 +146,9 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    /* Cover to extend image */
+    object-position: center center;
+    /* Center positioning for balanced crop */
 }
 
 /* In-image Bonus Tag */
